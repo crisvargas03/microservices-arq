@@ -25,7 +25,7 @@ namespace AutorsServices.DAL.Core.UnitOfWork
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _context.Dispose();
         }
     }
 }

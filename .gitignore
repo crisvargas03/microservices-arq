@@ -6,6 +6,10 @@
 # dotenv files
 .env
 
+# appsettings files for all the projects
+**/appsettings.json 
+# why is this not working?
+
 # User-specific files
 *.rsuser
 *.suo

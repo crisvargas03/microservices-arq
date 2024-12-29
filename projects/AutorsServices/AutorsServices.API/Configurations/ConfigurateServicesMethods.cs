@@ -1,4 +1,5 @@
-﻿using AutorsServices.DAL.Context;
+﻿using AutorsServices.BLL;
+using AutorsServices.DAL.Context;
 using AutorsServices.DAL.Core.Interfaces;
 using AutorsServices.DAL.Core.Repository;
 using AutorsServices.DAL.Core.UnitOfWork;
@@ -47,5 +48,6 @@ public static class ConfigurateServicesMethods
         services.ConfigurateAutomapper();
         services.ConfigurateServices();
         services.ConfigurateCors();
+        services.ConfigurateMediator();
     }
 }
