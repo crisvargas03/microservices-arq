@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace AutorsServices.BLL
@@ -11,6 +12,11 @@ namespace AutorsServices.BLL
             {
                 config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
             });
+        }
+
+        public static void ConfigurateValidator(this IServiceCollection services)
+        {
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }

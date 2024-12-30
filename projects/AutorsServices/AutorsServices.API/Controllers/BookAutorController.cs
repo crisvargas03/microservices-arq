@@ -1,4 +1,6 @@
 ﻿using AutorsServices.BLL.Features.BookAutor.Commands.Create;
+using AutorsServices.BLL.Features.BookAutor.Queries.GetAll;
+using AutorsServices.BLL.Features.BookAutor.Queries.GetSingleById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,9 +17,23 @@ namespace AutorsServices.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Unit>> Create(CreateBookAutorCommand request)
+        public async Task<ActionResult<bool>> Create(CreateBookAutorCommand request)
         {
             return await _mediator.Send(request);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<DAL.Entities.BookAutor>>> GetAll()
+        {
+            var queryRequest = new GetAllBookAutorQuery();
+            return await _mediator.Send(queryRequest);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<DAL.Entities.BookAutor>> GetById(Guid id)
+        {
+            var queryRequest = new GetSingleBookAutorByIdQuery { Id = id };
+            return await _mediator.Send(queryRequest);
         }
     }
 }

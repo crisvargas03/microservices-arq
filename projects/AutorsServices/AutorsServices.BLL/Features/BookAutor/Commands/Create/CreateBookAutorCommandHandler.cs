@@ -3,7 +3,7 @@ using MediatR;
 
 namespace AutorsServices.BLL.Features.BookAutor.Commands.Create
 {
-    public class CreateBookAutorCommandHandler : IRequestHandler<CreateBookAutorCommand, Unit>
+    public class CreateBookAutorCommandHandler : IRequestHandler<CreateBookAutorCommand, bool>
     {
         private readonly IUnitOfWork _unitOfWork;
         public CreateBookAutorCommandHandler(IUnitOfWork unitOfWork)
@@ -11,8 +11,9 @@ namespace AutorsServices.BLL.Features.BookAutor.Commands.Create
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<Unit> Handle(CreateBookAutorCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(CreateBookAutorCommand request, CancellationToken cancellationToken)
         {
+
             var bookAuthor = new DAL.Entities.BookAutor
             {
                 Name = request.Name,
@@ -24,7 +25,7 @@ namespace AutorsServices.BLL.Features.BookAutor.Commands.Create
             await _unitOfWork.BookAutors.CreateAsync(bookAuthor);
             await _unitOfWork.CompleteAsync();
 
-            return Unit.Value;
+            return true;
         }
     }
 }
