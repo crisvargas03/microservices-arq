@@ -15,10 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\BookServices.BLL\BookServices.BLL.csproj" />
     <ProjectReference Include="..\BooksServies.DAL\BooksServies.DAL.csproj" />
   </ItemGroup>
 

@@ -1,4 +1,5 @@
 using BooksServies.DAL;
+using BookServices.BLL;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,9 @@ builder.Services.AddSwaggerGen();
 
 // DataLayer Services
 builder.Services.AddDataAccessLayerServices(builder.Configuration);
+
+// BusinessLayer Services
+builder.Services.AddBusinessLogicLayerServices();
 
 var app = builder.Build();
 
