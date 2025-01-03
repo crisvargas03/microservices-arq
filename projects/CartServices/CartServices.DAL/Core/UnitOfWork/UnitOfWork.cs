@@ -1,4 +1,6 @@
 ﻿using CartServices.DAL.Context;
+using CartServices.DAL.Core.Interfaces;
+using CartServices.DAL.Core.Repository;
 
 namespace CartServices.DAL.Core.UnitOfWork
 {
@@ -6,12 +8,14 @@ namespace CartServices.DAL.Core.UnitOfWork
     {
         private readonly ShoppingCartDbContext _context;
 
-        // public IBooksRepository Books { get; private set; }
+        public IShoppingCartRepository ShoppingCart { get; private set; }
+        public IShoppingCartDetailsRepository ShoppingCartDetails { get; private set; }
 
         public UnitOfWork(ShoppingCartDbContext context)
         {
             _context = context;
-            // Books = new BooksRepository(_context);
+            ShoppingCart = new ShoppingCartRepository(_context);
+            ShoppingCartDetails = new ShoppingCartDetailsRepository(_context);
         }
 
         public async Task<int> CompleteAsync() => await _context.SaveChangesAsync();

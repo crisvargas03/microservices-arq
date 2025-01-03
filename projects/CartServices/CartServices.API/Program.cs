@@ -1,3 +1,4 @@
+using CartServices.BLL;
 using CartServices.DAL;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDataAccessLayerServices(builder.Configuration);
 
 // BusinessLayer Services
-// builder.Services.AddBusinessLogicLayerServices();
+builder.Services.AddBusinessLogicLayerServices();
 
 var app = builder.Build();
 

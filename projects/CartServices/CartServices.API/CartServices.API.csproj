@@ -15,10 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\CartServices.BLL\CartServices.BLL.csproj" />
     <ProjectReference Include="..\CartServices.DAL\CartServices.DAL.csproj" />
   </ItemGroup>
 
