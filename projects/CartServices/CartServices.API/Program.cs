@@ -14,7 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDataAccessLayerServices(builder.Configuration);
 
 // BusinessLayer Services
-builder.Services.AddBusinessLogicLayerServices();
+builder.Services.AddBusinessLogicLayerServices(builder.Configuration);
 
 var app = builder.Build();
 

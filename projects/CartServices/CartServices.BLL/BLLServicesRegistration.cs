@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CartServices.BLL.Features.ExternalServices.BooksApi;
+using CartServices.BLL.Features.ExternalServices.Interfaces;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace CartServices.BLL
@@ -10,7 +13,7 @@ namespace CartServices.BLL
             // services.AddAutoMapper(Assembly.GetAssembly(typeof(BooksMappingProfle)));
         }
 
-        public static void AddMediator(this IServiceCollection services)
+        private static void AddMediator(this IServiceCollection services)
         {
             services.AddMediatR(config =>
             {
@@ -18,10 +21,30 @@ namespace CartServices.BLL
             });
         }
 
-        public static void AddBusinessLogicLayerServices(this IServiceCollection services)
+        private static void AddServices(this IServiceCollection services)
         {
+            services.AddScoped<IBookExternalServices, BookExternalServices>();
+        }
+
+        private static void AddHttpClientConfig(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddHttpClient("BooksApi", c =>
+            {
+                c.BaseAddress = new Uri(configuration["Services:Books"]!);
+            });
+
+            services.AddHttpClient("AutorsApi", c =>
+            {
+                c.BaseAddress = new Uri(configuration["Services:Autors"]!);
+            });
+        }
+
+        public static void AddBusinessLogicLayerServices(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddHttpClientConfig(configuration);
             services.AddAutomapperService();
             services.AddMediator();
+            services.AddServices();
         }
     }
 }

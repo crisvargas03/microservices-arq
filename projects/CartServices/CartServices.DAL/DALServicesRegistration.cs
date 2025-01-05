@@ -1,4 +1,6 @@
 ﻿using CartServices.DAL.Context;
+using CartServices.DAL.Core.Interfaces;
+using CartServices.DAL.Core.Repository;
 using CartServices.DAL.Core.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +23,8 @@ namespace CartServices.DAL
         private static void AddRepositories(this IServiceCollection services)
         {
             // services.AddScoped<IBooksRepository, BooksRepository>();
+            services.AddScoped<IShoppingCartDetailsRepository, ShoppingCartDetailsRepository>();
+            services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
         }
 
         private static void AddUnitOfWork(this IServiceCollection services)
