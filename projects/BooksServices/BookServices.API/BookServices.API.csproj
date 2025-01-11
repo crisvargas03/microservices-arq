@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AutorsServices.BLL\AutorsServices.BLL.csproj" />
-    <ProjectReference Include="..\AutorsServices.DAL\AutorsServices.DAL.csproj" />
+    <ProjectReference Include="..\BookServices.BLL\BookServices.BLL.csproj" />
+    <ProjectReference Include="..\BooksServies.DAL\BooksServies.DAL.csproj" />
   </ItemGroup>
 
 </Project>

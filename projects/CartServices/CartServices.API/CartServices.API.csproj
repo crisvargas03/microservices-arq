@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AutorsServices.BLL\AutorsServices.BLL.csproj" />
-    <ProjectReference Include="..\AutorsServices.DAL\AutorsServices.DAL.csproj" />
+    <ProjectReference Include="..\CartServices.BLL\CartServices.BLL.csproj" />
+    <ProjectReference Include="..\CartServices.DAL\CartServices.DAL.csproj" />
   </ItemGroup>
 
 </Project>

@@ -7,14 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="DTOs\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="FluentValidation" Version="11.11.0" />
-    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
     <PackageReference Include="MediatR" Version="12.4.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AutorsServices.DAL\AutorsServices.DAL.csproj" />
+    <ProjectReference Include="..\BooksServies.DAL\BooksServies.DAL.csproj" />
   </ItemGroup>
 
 </Project>

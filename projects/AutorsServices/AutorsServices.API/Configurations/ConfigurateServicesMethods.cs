@@ -1,4 +1,8 @@
-﻿using AutorsServices.DAL.Context;
+﻿using AutorsServices.BLL;
+using AutorsServices.DAL.Context;
+using AutorsServices.DAL.Core.Interfaces;
+using AutorsServices.DAL.Core.Repository;
+using AutorsServices.DAL.Core.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 
 namespace AutorsServices.API.Configurations;
@@ -11,7 +15,6 @@ public static class ConfigurateServicesMethods
         {
             var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING")
                                    ?? configuration.GetConnectionString("MainDB");
-
             op.UseNpgsql(connectionString);
         });
     }
@@ -24,13 +27,13 @@ public static class ConfigurateServicesMethods
 
     private static void ConfigurateServices(this IServiceCollection services)
     {
-        // services.AddScoped<IUserService, UserServices>();
-        // services.AddScoped<IJwtService, JwtServices>();
+        services.AddScoped<IAcademicGradeRepository, AcademicGradeRepository>();
+        services.AddScoped<IBookAutorRepository, BookAutorRepository>();
     }
 
     private static void ConfigurateUnitOfWork(this IServiceCollection services)
     {
-        // services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
     }
     
     private static void ConfigurateAutomapper(this IServiceCollection services) 
@@ -45,5 +48,6 @@ public static class ConfigurateServicesMethods
         services.ConfigurateAutomapper();
         services.ConfigurateServices();
         services.ConfigurateCors();
+        services.ConfigurateMediator();
     }
 }
