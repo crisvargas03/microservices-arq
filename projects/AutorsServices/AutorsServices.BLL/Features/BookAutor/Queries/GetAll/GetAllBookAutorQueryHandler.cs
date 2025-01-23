@@ -17,7 +17,7 @@ namespace AutorsServices.BLL.Features.BookAutor.Queries.GetAll
             var paginationArg = new DAL.Core.PaginationArguments();
             var result = await _unitOfWork.BookAutors.GetAllAsync(paginationArg);
 
-            return result.ToList();
+            return result;
         }
     }
 }
