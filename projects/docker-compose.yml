@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+    autorsservice.api:
+        image: 'autorservices-img:dev'
+        build:
+            context: ./AutorsServices
+            dockerfile: Dockerfile
+        ports:
+            - '5001:8080'
+networks:
+    default:
+        external:
+            name: microservices-network
