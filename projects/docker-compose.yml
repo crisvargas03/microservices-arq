@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+    autorsservice.api:
+        image: 'autorservices-img:dev'
+        build:
+            context: ./AutorsServices
+            dockerfile: Dockerfile
+        ports:
+            - '5001:8080'
+    booksservices.api:
+        image: 'booksservices-img:dev'
+        build:
+            context: ./BooksServices
+            dockerfile: Dockerfile
+        ports:
+            - '5002:8080'
+    cartservices.api:
+        image: 'cartservices-img:dev'
+        build:
+            context: ./CartServices
+            dockerfile: Dockerfile
+        ports:
+            - '5003:8080'
+networks:
+    default:
+        external:
+            name: microservices-network

@@ -14,7 +14,7 @@ namespace AutorsServices.BLL.Features.BookAutor.Queries.GetAll
 
         public async Task<List<DAL.Entities.BookAutor>> Handle(GetAllBookAutorQuery request, CancellationToken cancellationToken)
         {
-            var paginationArg = new DAL.Core.PaginationArguments() { PageNumber = 2, PageSize = 10 };
+            var paginationArg = new DAL.Core.PaginationArguments() { PageNumber = 1, PageSize = 10 };
             var result = await _unitOfWork.BookAutors.GetAllAsync(paginationArg);
 
             return result;
